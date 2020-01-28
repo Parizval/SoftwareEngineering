@@ -2,24 +2,20 @@ import java.util.Scanner;
 
 public class BubbleSort {
 
-    public static int[] BubbleSort(int[] arr)
+    static int[] RecursiveBubbleSort(int arr[], int n)
     {
-        boolean check = true;
-            while (check)
-            {
-                int temp = 0 ;
-                check = false;
-                for (int i = 0; i < arr.length-1 ; i++) {
-                    if (arr[i] > arr[i+1])
-                    {
-                        temp = arr[i];
-                        arr[i] = arr[i+1];
-                        arr[i+1] = temp;
-                        check = true;
-                    }
-                }
-            }
+        if (n == 1)
             return arr;
+
+        for (int i=0; i<n-1; i++)
+            if (arr[i] > arr[i+1])
+            {
+                int temp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = temp;
+            }
+
+        return RecursiveBubbleSort(arr,n-1);
     }
 
     public static void main(String[] args) {
